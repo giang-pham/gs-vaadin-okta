@@ -16,7 +16,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authenticated()
             .and()
             .csrf().disable()
-            .oauth2Login().defaultSuccessUrl("/userinfo");
+            .oauth2Login().defaultSuccessUrl("/userinfo", true);
     }
 }
 
