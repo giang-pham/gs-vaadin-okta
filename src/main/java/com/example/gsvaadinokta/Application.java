@@ -16,25 +16,4 @@ public class Application {
 		SpringApplication.run(Application.class);
 	}
 
-    @Configuration
-    public static class OktaWebClientConfig {
-
-        @Bean
-        WebClient webClient(
-                ClientRegistrationRepository clientRegistrations,
-                OAuth2AuthorizedClientRepository authorizedClients
-        ) {
-            ServletOAuth2AuthorizedClientExchangeFilterFunction oauth2 =
-                    new ServletOAuth2AuthorizedClientExchangeFilterFunction(
-                            clientRegistrations, authorizedClients
-                    );
-            oauth2.setDefaultOAuth2AuthorizedClient(true);
-            oauth2.setDefaultClientRegistrationId("okta");
-            return WebClient.builder()
-                    .apply(oauth2.oauth2Configuration())
-                    .build();
-        }
-    }
-
-
 }
